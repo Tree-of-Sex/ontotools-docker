@@ -1,4 +1,6 @@
-FROM ghcr.io/ebispot/ols4-dataload:dev
+# Pinned to the last upstream build before PR #1171 (2026-02-14) deleted
+# dataload.dockersh. Keep in lockstep with docker-compose.yml image pins.
+FROM ghcr.io/ebispot/ols4-dataload:a7fb62ffb006671fba21a3e62164c7b6a25a7ae7
 
 USER root
 RUN rm -rf /opt/neo4j/data && \

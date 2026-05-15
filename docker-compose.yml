@@ -6,7 +6,11 @@ services:
         dockerfile: Dockerfile.dataload # Extend in order to symlink neo4j volumes
       environment:
         - JAVA_OPTS=${JAVA_OPTS}
-      image: ghcr.io/ebispot/ols4-dataload:dev
+      # Pinned to the last upstream build before PR #1171 (2026-02-14) deleted
+      # `dataload.dockersh`. The current `:dev` tag is broken (CMD references a
+      # file that no longer ships in the image). Bump only after verifying that
+      # the new upstream nextflow-based pipeline has been adopted here.
+      image: ghcr.io/ebispot/ols4-dataload:a7fb62ffb006671fba21a3e62164c7b6a25a7ae7
       volumes:
         - ols4-solr-data:/opt/solr/server/solr:rw
         - ols4-neo4j-data:/opt/neo4j/data:rw
@@ -40,7 +44,8 @@ services:
       #  ols4-dataload:
       #    condition: service_completed_successfully
     ols4-backend:
-      image: ghcr.io/ebispot/ols4-backend:dev
+      # Pinned in lockstep with ols4-dataload (see note above).
+      image: ghcr.io/ebispot/ols4-backend:a7fb62ffb006671fba21a3e62164c7b6a25a7ae7
       ports:
         - 8080:8080
       environment:
@@ -53,7 +58,8 @@ services:
         - ols4-solr
         - ols4-neo4j 
     ols4-frontend:
-      image: ghcr.io/ebispot/ols4-frontend:dev
+      # Pinned in lockstep with ols4-dataload (see note above).
+      image: ghcr.io/ebispot/ols4-frontend:a7fb62ffb006671fba21a3e62164c7b6a25a7ae7
       env_file: ./frontend/.env
       ports:
         - 8081:8080
