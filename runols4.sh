@@ -17,13 +17,13 @@ docker compose build ols4-dataload
 
 # Usage:
 #   sh runols4.sh           → rebuild all ontologies + reload OLS
-#   sh runols4.sh mondo     → rebuild only mondo-edit.owl + reload OLS
+#   sh runols4.sh toso      → rebuild only toso.owl + reload OLS
 #   sh runols4.sh <target>  → rebuild a specific Makefile target
 
 # Build ontology content to load into OLS
-if [ "${1:-}" = "mondo" ]; then
-  echo ">>> Building mondo-edit.owl only..."
-  sh odk.sh make -B ontologies/mondo-edit.owl
+if [ "${1:-}" = "toso" ]; then
+  echo ">>> Building toso.owl only..."
+  sh odk.sh make -B ontologies/toso.owl
 elif [ $# -gt 0 ]; then
   echo ">>> Building target: $*"
   sh odk.sh make -B "$@"
