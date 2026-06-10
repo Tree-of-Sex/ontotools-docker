@@ -25,7 +25,7 @@ time (
     echo " - stdout: ${STDOUT_LOGFILE}"
     echo " - stderr: ${STDERR_LOGFILE}"
 
-    ./redeploy.sh toso > ${STDOUT_LOGFILE} 2> ${STDERR_LOGFILE}
+    ./runols4.sh toso > ${STDOUT_LOGFILE} 2> ${STDERR_LOGFILE}
     EXIT_CODE=$?
 
     echo "...done!"
