@@ -30,7 +30,7 @@ git checkout toso
 
 # start services
 export REACT_APP_APIURL=http://172.27.20.198:8009/
-nohup sh runols4.sh toso > logs_runols4.txt 2>&1 </dev/null & 
+nohup bash runols4.sh toso > logs_runols4.txt 2>&1 </dev/null & 
 
 # monitor the starting process 
 tail -f logs_runols4.txt
