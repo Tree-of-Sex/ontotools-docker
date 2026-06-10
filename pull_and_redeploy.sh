@@ -18,13 +18,15 @@ STDOUT_LOGFILE="${SCRIPT_DIR}/deploy_logs/deploy_${CUR_DATE}_stdout.log"
 STDERR_LOGFILE="${SCRIPT_DIR}/deploy_logs/deploy_${CUR_DATE}_stderr.log"
 
 cd "${SCRIPT_DIR}" && \
-git pull && \
+git fetch --prune && \
+git checkout toso && \
+git pull --ff-only && \
 time (
     echo "Performing redeploy; writing results to: "
     echo " - stdout: ${STDOUT_LOGFILE}"
     echo " - stderr: ${STDERR_LOGFILE}"
 
-    sudo ./redeploy.sh > ${STDOUT_LOGFILE} 2> ${STDERR_LOGFILE}
+    ./runols4.sh toso > ${STDOUT_LOGFILE} 2> ${STDERR_LOGFILE}
     EXIT_CODE=$?
 
     echo "...done!"
