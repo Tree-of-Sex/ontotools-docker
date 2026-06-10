@@ -18,8 +18,9 @@ STDOUT_LOGFILE="${SCRIPT_DIR}/deploy_logs/deploy_${CUR_DATE}_stdout.log"
 STDERR_LOGFILE="${SCRIPT_DIR}/deploy_logs/deploy_${CUR_DATE}_stderr.log"
 
 cd "${SCRIPT_DIR}" && \
-git pull && \
+git fetch --prune && \
 git checkout toso && \
+git pull --ff-only && \
 time (
     echo "Performing redeploy; writing results to: "
     echo " - stdout: ${STDOUT_LOGFILE}"
