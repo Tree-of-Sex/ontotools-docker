@@ -39,7 +39,7 @@ tail -f logs_runols4.txt
 # frontend
 http://172.27.20.198:8008/
 # backend
-http://172.27.20.198:8080/api/v2/ontologies
+http://172.27.20.198:8009/api/v2/ontologies
 ```
 
 ## DNS mapping
