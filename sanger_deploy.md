@@ -58,7 +58,7 @@ Then:
 ssh ubuntu@172.27.20.198
 
 # reload the data and services
-# arond 2-3 mins
+# around 2-3 mins
 cd /home/ubuntu/ols4/ontotools-docker
  ./pull_and_redeploy.sh
 
